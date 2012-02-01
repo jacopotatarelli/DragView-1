@@ -20,6 +20,7 @@ public class DragViewActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         ImageView iv = (ImageView) findViewById(R.id.imageView1);
+        ImageView iv2 = (ImageView) findViewById(R.id.imageView2); //
         iv.setOnTouchListener(new View.OnTouchListener()
         {
 			
@@ -35,6 +36,21 @@ public class DragViewActivity extends Activity
 				return false;
 			}
 		});
+        iv2.setOnTouchListener(new View.OnTouchListener()			//
+        {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event)
+			{
+				if(event.getActionMasked()==MotionEvent.ACTION_DOWN)
+				{
+					offset_x = (int) event.getX();
+					offset_y = (int) event.getY();
+					selected_item = v;
+				}
+				return false;
+			}
+		});															//
         RelativeLayout vg = (RelativeLayout) findViewById(R.id.relativeLayout1);
         vg.setOnTouchListener(new View.OnTouchListener()
         {
@@ -48,13 +64,13 @@ public class DragViewActivity extends Activity
 					int x = (int)event.getX() - offset_x;
 					int y = (int)event.getY() - offset_y;
 					int w = getWindowManager().getDefaultDisplay().getWidth() -250;
-					int h = getWindowManager().getDefaultDisplay().getHeight()-300;
+					int h = getWindowManager().getDefaultDisplay().getHeight()-500;
 					if (x > w)
 					x = w;
 					if (y > h)
 					y = h;
 					RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(new ViewGroup.MarginLayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT));
-					lp.setMargins(x, y, 128, 128);
+					lp.setMargins(x, y, 0, 0);
 					selected_item.setLayoutParams(lp);
 				}
 				

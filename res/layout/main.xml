@@ -10,4 +10,11 @@
             android:layout_height="wrap_content"
             android:src="@drawable/lorry" />
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/imageView1"
+            android:src="@drawable/van" />
+
     </RelativeLayout>
